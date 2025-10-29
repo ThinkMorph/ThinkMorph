@@ -164,8 +164,6 @@ All evaluations are conducted using the [`VLMEvalKit`](https://github.com/open-c
 
 ## 📊 Benchmarks
 
-### 1. Visual Understanding
-
 | Model | Size |  | VSP | VisPuzzle | ChartQA | VStar | BLINK-J | MMVP | SAT | BLINK | CV-Bench |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | GPT-4o | – |  | 33.50 | 43.75 | 76.34 | 61.78 | 72.67 | 84.67 | 28.00 | 60.28 | 75.61 |
