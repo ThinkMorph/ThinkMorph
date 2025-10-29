@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/logo_image_1.png" width="50%"> <br>
+    <img src="assets/logo.png" width="50%"> <br>
 </p>
 
 
@@ -129,7 +129,7 @@ See Bagel's [TRAIN](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md) 
 
 ### Eval
 
-All evaluations are conducted using the [`vlmevalkit`](https://github.com/open-compass/VLMEvalKit) framework for consistency and reproducibility. The inference process can be referred to [infernece.ipynb](inference.ipynb)
+All evaluations are conducted using the [`VLMEvalKit`](https://github.com/open-compass/VLMEvalKit) framework for consistency and reproducibility. The inference process can be referred to [infernece.ipynb](inference.ipynb)
 
 ## 📊 Benchmarks
 
