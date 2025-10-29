@@ -7,7 +7,38 @@
 
 🌟  This is the official repository for the paper "[ThinkMorph: Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning]()", which contains the training and inference code for ThinkMorph.
 
-[[🤗Model and Dataset](https://huggingface.co/ThinkMorph)] [[📖 ArXiv Paper]()]
+<p align="center">
+  <a href="">
+    <img
+      src="https://img.shields.io/badge/ThinkMorph-Website-0A66C2?logo=safari&logoColor=white"
+      alt="ThinkMorph Website"
+    />
+  </a>
+  <a href="">
+    <img
+      src="https://img.shields.io/badge/ThinkMorph-Paper-red?logo=arxiv&logoColor=red"
+      alt="ThinkMorph Paper on arXiv"
+    />
+  </a>
+  <a href="https://huggingface.co/ThinkMorph/ThinkMorph-7B">
+    <img 
+        src="https://img.shields.io/badge/ThinkMorph-Model-yellow?logo=huggingface&logoColor=yellow" 
+        alt="ThinkMorph Model"
+    />
+  </a>
+  <a href="https://huggingface.co/ThinkMorph">
+    <img 
+        src="https://img.shields.io/badge/ThinkMorph-Dataset-yellow?logo=huggingface&logoColor=yellow" 
+        alt="ThinkMorph Dataset"
+    />
+  </a>
+  <!-- <a href="https://demo.bagel-ai.org/">
+    <img
+      src="https://img.shields.io/badge/BAGEL-Demo-blue?logo=googleplay&logoColor=blue"
+      alt="BAGEL Demo"
+    />
+  </a> -->
+</p>
 
 ## 💥 News 
 - **[2025.10.29]** Our model checkpoint and training data are now accessible at [Huggingface](https://huggingface.co/ThinkMorph).
