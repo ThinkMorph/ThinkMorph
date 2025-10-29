@@ -9,7 +9,7 @@ torchrun \
   --master_addr=$master_addr \
   --master_port=$master_port \
   train/pretrain_unified_navit.py \
-  --dataset_config_file ./data/configs/interleaved_reasoning.yaml \
+  --dataset_config_file ./data/configs/text_reasoning.yaml \
   --layer_module Qwen2MoTDecoderLayer \
   --finetune_from_hf True \
   --auto_resume True \

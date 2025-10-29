@@ -1,7 +1,149 @@
 # ThinkMorph: Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
 
-Official code for paper: ThinkMorph: Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
+🌟  This is the official repository for the paper "[ThinkMorph: Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning]()", which contains the training and inference code for ThinkMorph.
 
-The code is based on the bagel codebase, see [Bagel](https://github.com/ByteDance-Seed/Bagel) for details.
+[[🤗Model and Dataset](https://huggingface.co/ThinkMorph)] [[📖 ArXiv Paper]()]
 
-Training scripts is provided in ./scripts
+## 💥 News 
+- **[2025.10.29]** Our model checkpoint and training data are now accessible at [Huggingface](https://huggingface.co/ThinkMorph).
+- **[2025.10.29]** Our paper is now accessible at .
+
+## 👀 About ThinkMorph
+
+Multimodal reasoning demands synergistic coordination of language and vision. However, determining what constitutes meaningful interleaved reasoning is non-trivial, and current approaches lack a generalizable recipe.
+We present **ThinkMorph**, a unified model that enables such generalization through a principled approach: treating text and images as complementary modalities that mutually advance reasoning.
+Guided by this principle, we identify tasks requiring concrete, verifiable visual engagement and design a high-quality data pipeline that trains models to generate interleaved images and text as progressive reasoning traces.
+ThinkMorph delivers substantial gains on **vision-centric** tasks, achieving an average improvement of 34.74% over the base model while consistently surpassing text-only and image-only modes.
+By fine-tuning with **merely ~24K** samples, it achieves out-of-domain performance that rivals or even surpasses leading large-scale, proprietary VLMs.
+Intriguingly, ThinkMorph unlocks emergent properties that represent a *hallmark of multimodal intelligence*: the elicitation of unseen visual manipulation skills, the self-adaptive switching between reasoning modes according to task complexity, and better test-time scaling via diversified thoughts. 
+These findings suggest promising directions for future work to characterize the emergent capabilities of unified models for multimodal reasoning.
+
+## 🔥 Quick Start
+
+1️⃣  Set up environment
+```bash
+git clone https://github.com/ThinkMorph/ThinkMorph.git
+cd ThinkMorph
+conda create -n thinkmorph python=3.10 -y
+conda activate thinkmorph
+pip install -r requirements.txt
+```
+
+2️⃣  Download checkpoint
+```bash
+pip install -U "huggingface_hub[cli]"
+hf download ThinkMorph/ThinkMorph
+```
+
+3️⃣ Use `inference.ipynb` to play with ThinkMorph!
+
+## 🔥 Train & Eval
+
+### Training Data prepration
+
+We opensource our training data mentioned in our paper containing four tasks: **Jigsaw Assembly**, **Spatial Navigation**, **Visual Search** , and **Chart Refocus**. Here we show typical examples of four tasks. Training data can be downloaded from [Huggingface](https://huggingface.co/ThinkMorph).
+
+<p align="center">
+    <img src="assets/thinkmorph_main.jpg" width="100%"> <br>
+</p>
+
+
+1. **Download the training dataset**
+
+   ```python
+    from datasets import load_dataset
+
+    # Jigsaw Assembly
+    dataset = load_dataset("ThinkMorph/Jigsaw_Assembly", split="train")
+
+    # Spatial Navigation
+    dataset = load_dataset("ThinkMorph/Spatial_Navigation", split="train")
+
+    # Visual Search
+    dataset = load_dataset("ThinkMorph/Visual_Search", split="train")
+
+    # Chart Refocus
+    dataset = load_dataset("ThinkMorph/Chart_Refocus", split="train")
+    ```
+
+2. Convert the downloaded dataset into a data format suitable for model training. For details on the Bagel officially supported data formats, see in [Train](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md). Based on Bagel's implementation, we modify the training code to support our interleaved data format, and an easy-to-understand example of a parquet file is shown below:
+
+```python
+{
+    "image_list": [problem_image_0, reasoning_image_0],
+    "instruction_list": [question],
+    "output_text_list": [f"<think>{resoning_thought_0}</think><image_start>",f"<image_end><think>{resoning_thought_1}</think><answer>{answer}</answer>"],
+}
+```
+
+3. Edit **`data/dataset_info.py`** with your own data path.
+
+4. Edit **`configs/example.yaml`**. We provide three example configuration files corresponding to the different training settings.
+
+---
+
+### Train
+
+```bash
+torchrun \
+  --nnodes=$num_nodes \
+  --node_rank=$node_rank \
+  --nproc_per_node=8 \
+  --master_addr=$master_addr \
+  --master_port=$master_port \
+  train/pretrain_unified_navit.py \
+  --dataset_config_file ./data/configs/interleaved_reasoning.yaml \
+  --model_path $model_path \
+  --layer_module Qwen2MoTDecoderLayer \
+  --finetune_from_hf True \
+  --auto_resume True \
+  --finetune-from-ema True \
+  --resume-from $model_path \
+  --results_dir $output_path \
+  --checkpoint_dir $ckpt_path \
+  --lr 1e-5 \
+  --num_worker 4 \
+  --max_latent_size 64  \
+  --max_num_tokens 32768 \
+  --mse_weight 1 \
+  --ce_weight 1 \
+  --total_steps 8000 \
+
+```
+
+You can replace the variables in the script with your own before running. More training scripts are provided in `./script`. 
+See Bagel's [TRAIN](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md) for more details.
+
+### Eval
+
+All evaluations are conducted using the [`vlmevalkit`](https://github.com/open-compass/VLMEvalKit) framework for consistency and reproducibility. The inference process can be referred to [infernece.ipynb](inference.ipynb)
+
+## 📊 Benchmarks
+
+### 1. Visual Understanding
+
+| Model | Size |  | VSP | VisPuzzle | ChartQA | VStar🌟 | BLINK-J🌟 | MMVP🌟 | SAT🌟 | BLINK🌟 | CV-Bench🌟 |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| | | | | | | | | | | | |
+| Visual Understanding-only VLM | | | | | | | | | | | |
+| GPT-4o | – |  | 33.50 | 43.75 | 76.34 | 61.78 | 72.67 | 84.67 | 28.00 | 60.28 | 75.61 |
+| GPT-5 | – |  | 57.33 | 78.00 | 80.85 | 71.73 | 77.33 | 86.33 | 73.30 | 69.86 | 85.46 |
+| Gemini 2.5 Flash | – |  | 59.33 | 47.00 | 83.79 | 70.68 | 66.00 | 80.33 | 56.00 | 67.49 | 85.07 |
+| InternVL3.5 | 8B |  | 8.17 | 34.75 | 76.26 | 68.59 | 71.33 | 76.33 | 45.33 | 59.60 | 81.99 |
+|  | 38B |  | 20.16 | 36.50 | 80.44 | 76.96 | 80.67 | 80.33 | 49.33 | 62.65 | 85.96 |
+| Qwen2.5-VL | 7B |  | 2.16 | 34.75 | 78.12 | 76.44 | 59.33 | 77.33 | 51.33 | 55.92 | 75.20 |
+|  | 72B |  | 41.83 | 40.00 | 82.03 | 85.86 | 61.33 | 82.00 | 64.67 | 61.91 | 82.54 |
+| | | | | | | | | | | | |
+| Unified Models | | | | | | | | | | | |
+| Janus-pro | 7B |  | 0.00 | 33.50 | 43.08 | 38.22 | 50.67 | 63.33 | 22.00 | 38.51 | 67.83 |
+| Chameleon | 7B |  | 0.83 | 30.50 | 5.74 | 28.27 | 0.67 | 47.67 | 10.67 | 16.52 | 36.52 |
+| Bagel | 7B |  | 0.83* | 35.00* | 61.82 | 55.49 | 67.33 | 70.33 | 44.67 | 47.66 | 76.03 |
+| ThinkMorph | 7B |  | 75.83 | 79.00 | 78.10 | 67.02 | 72.00 | 80.33 | 52.67 | 60.07 | 80.82 |
+| Δ (vs Bagel) |  |  | +75.00 | +44.00 | +16.28 | +11.53 | +4.67 | +10.00 | +8.00 | +12.41 | +4.79 |
+
+
+## ✍️ Citation
+
+```bibtex
+
+```
