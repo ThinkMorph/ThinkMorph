@@ -3,7 +3,7 @@
 </p>
 
 
-# Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
+## Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
 
 🌟  This is the official repository for the paper "[ThinkMorph: Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning]()", which contains the training and inference code for ThinkMorph.
 
