@@ -12,10 +12,21 @@
 
 Multimodal reasoning demands synergistic coordination of language and vision. However, determining what constitutes meaningful interleaved reasoning is non-trivial, and current approaches lack a generalizable recipe.
 We present **ThinkMorph**, a unified model that enables such generalization through a principled approach: treating text and images as complementary modalities that mutually advance reasoning.
+<p align="center">
+    <img src="assets/interleaved_design.jpg" width="80%"> <br>
+</p>
 Guided by this principle, we identify tasks requiring concrete, verifiable visual engagement and design a high-quality data pipeline that trains models to generate interleaved images and text as progressive reasoning traces.
+<p align="center">
+    <img src="assets/thinkmorph_main.jpg" width="80%"> <br>
+</p>
+
 ThinkMorph delivers substantial gains on **vision-centric** tasks, achieving an average improvement of 34.74% over the base model while consistently surpassing text-only and image-only modes.
 By fine-tuning with **merely ~24K** samples, it achieves out-of-domain performance that rivals or even surpasses leading large-scale, proprietary VLMs.
+
 Intriguingly, ThinkMorph unlocks emergent properties that represent a *hallmark of multimodal intelligence*: the elicitation of unseen visual manipulation skills, the self-adaptive switching between reasoning modes according to task complexity, and better test-time scaling via diversified thoughts. 
+<p align="center">
+    <img src="assets/emrging_prop.jpg" width="80%"> <br>
+</p>
 These findings suggest promising directions for future work to characterize the emergent capabilities of unified models for multimodal reasoning.
 
 ## 🔥 Quick Start
@@ -43,9 +54,6 @@ hf download ThinkMorph/ThinkMorph
 
 We opensource our training data mentioned in our paper containing four tasks: **Jigsaw Assembly**, **Spatial Navigation**, **Visual Search** , and **Chart Refocus**. Here we show typical examples of four tasks. Training data can be downloaded from [Huggingface](https://huggingface.co/ThinkMorph).
 
-<p align="center">
-    <img src="assets/thinkmorph_main.jpg" width="100%"> <br>
-</p>
 
 
 1. **Download the training dataset**
@@ -78,7 +86,7 @@ We opensource our training data mentioned in our paper containing four tasks: **
 
 3. Edit **`data/dataset_info.py`** with your own data path.
 
-4. Edit **`configs/example.yaml`**. We provide three example configuration files corresponding to the different training settings.
+4. Edit **`configs/example.yaml`**. Additionally, we provide example configuration files corresponding to the different training settings in `data/configs`.
 
 ---
 
