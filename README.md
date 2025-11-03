@@ -6,13 +6,13 @@
 ## Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
 
 <p align="center">
-  <a href="">
+  <a href="https://thinkmorph.github.io/">
     <img
       src="https://img.shields.io/badge/ThinkMorph-Website-0A66C2?logo=safari&logoColor=white"
       alt="ThinkMorph Website"
     />
   </a>
-  <a href="">
+  <a href="https://arxiv.org/abs/2510.27492">
     <img
       src="https://img.shields.io/badge/ThinkMorph-Paper-red?logo=arxiv&logoColor=red"
       alt="ThinkMorph Paper on arXiv"
@@ -42,7 +42,7 @@
 
 ## 💥 News 
 - **[2025.10.29]** Our model checkpoint and training data are now accessible at [Huggingface](https://huggingface.co/ThinkMorph).
-- **[2025.10.29]** Our paper is now accessible at .
+- **[2025.10.29]** Our paper is now accessible at [arxiv](https://arxiv.org/abs/2510.27492).
 
 ## 👀 About ThinkMorph
 
@@ -174,5 +174,13 @@ All evaluations are conducted using the [`VLMEvalKit`](https://github.com/open-c
 ## ✍️ Citation
 
 ```bibtex
-
+@misc{gu2025thinkmorphemergentpropertiesmultimodal,
+      title={ThinkMorph: Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning}, 
+      author={Jiawei Gu and Yunzhuo Hao and Huichen Will Wang and Linjie Li and Michael Qizhe Shieh and Yejin Choi and Ranjay Krishna and Yu Cheng},
+      year={2025},
+      eprint={2510.27492},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.27492}, 
+}
 ```
