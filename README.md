@@ -32,7 +32,7 @@
   </a>
   <a href="https://github.com/hychaochao/VLMEvalKit_Thinkmorph">
     <img 
-        src="https://img.shields.io/badge/ThinkMorph-Eval-yellow?logo=eval&logoColor=black" 
+        src="https://img.shields.io/badge/ThinkMorph-Eval-purple?logo=eval&logoColor=black" 
         alt="ThinkMorph eval"
     />
   </a>
