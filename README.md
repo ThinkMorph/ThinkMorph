@@ -30,10 +30,16 @@
         alt="ThinkMorph Dataset"
     />
   </a>
+  <a href="https://github.com/hychaochao/VLMEvalKit_Thinkmorph">
+    <img 
+        src="https://img.shields.io/badge/ThinkMorph-Eval-yellow?logo=eval&logoColor=black" 
+        alt="ThinkMorph eval"
+    />
+  </a>
   <a href="https://x.com/Kuvvius/status/1985388865595851135">
     <img
       src="https://img.shields.io/badge/ThinkMorph-Twitter-blue?logo=x&logoColor=black"
-      alt="BAGEL Demo"
+      alt="ThinkMorph-Twitter"
     />
   </a>
 </p>
@@ -41,6 +47,7 @@
 🌟  This is the official repository which contains the training and inference code for ThinkMorph.
 
 ## 💥 News 
+- **[2025.12.22]** The evaluation code for ThinkMorph is now accessible at [VLMEvalKit_Thinkmorph](https://github.com/hychaochao/VLMEvalKit_Thinkmorph).
 - **[2025.10.29]** Our model checkpoint and training data are now accessible at [Huggingface](https://huggingface.co/ThinkMorph).
 - **[2025.10.29]** Our paper is now accessible at [arxiv](https://arxiv.org/abs/2510.27492).
 
@@ -162,8 +169,7 @@ You can replace the variables in the script with your own before running. More t
 See Bagel's [TRAIN](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md) for more details.
 
 ### Eval
-
-All evaluations are conducted using the [`VLMEvalKit`](https://github.com/open-compass/VLMEvalKit) framework for consistency and reproducibility. The inference process can be referred to [infernece.ipynb](inference.ipynb)
+Our evaluation code is open-sourced in [VLMEvalKit_Thinkmorph](https://github.com/hychaochao/VLMEvalKit_Thinkmorph). This repository provides evaluation support for the ThinkMorph model based on [`VLMEvalKit`](https://github.com/open-compass/VLMEvalKit). And this repo also supports all the benchmarks evaluated in our paper, including: VSP, VisPuzzle, ChartQA, VStar, BLINK-J, MMVP, SAT, BLINK, and CV-Bench.
 
 ## 📊 Benchmarks
 
