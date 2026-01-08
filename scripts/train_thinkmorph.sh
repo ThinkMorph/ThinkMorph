@@ -21,6 +21,8 @@ torchrun \
   --num_worker 4 \
   --max_latent_size 64  \
   --max_num_tokens 32768 \
+  --vit_cond_dropout_prob 0 \
+  --text_cond_dropout_prob 0 \
   --mse_weight 1 \
   --ce_weight 1 \
   --total_steps 8000 \

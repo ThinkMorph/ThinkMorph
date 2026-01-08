@@ -138,6 +138,8 @@ We opensource our training data mentioned in our paper containing four tasks: **
 
 ### Train
 
+We provide script examples for three training settings (interleaved reasoning, text reasoning and thinkmorph) in our paper, in `./script`. Here we demonstrate training scripts for interleaved reasoning:
+
 ```bash
 torchrun \
   --nnodes=$num_nodes \
@@ -159,14 +161,15 @@ torchrun \
   --num_worker 4 \
   --max_latent_size 64  \
   --max_num_tokens 32768 \
+  --vit_cond_dropout_prob 0 \ # see details in https://github.com/ByteDance-Seed/Bagel/issues/69
+  --text_cond_dropout_prob 0 \
   --mse_weight 1 \
   --ce_weight 1 \
   --total_steps 8000 \
 
 ```
 
-You can replace the variables in the script with your own before running. More training scripts are provided in `./script`. 
-See Bagel's [TRAIN](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md) for more details.
+You can replace the variables in the script with your own before running. See Bagel's [TRAIN](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md) for more details.
 
 ### Eval
 Our evaluation code is open-sourced in [VLMEvalKit_Thinkmorph](https://github.com/hychaochao/VLMEvalKit_Thinkmorph). This repository provides evaluation support for the ThinkMorph model based on [`VLMEvalKit`](https://github.com/open-compass/VLMEvalKit). And this repo also supports all the benchmarks evaluated in our paper, including: VSP, VisPuzzle, ChartQA, VStar, BLINK-J, MMVP, SAT, BLINK, and CV-Bench.

@@ -18,9 +18,11 @@ torchrun \
   --results_dir $output_path \
   --checkpoint_dir $ckpt_path \
   --lr 1e-5 \
-  --num_worker 4 \
+  --num_workers 4 \
   --max_latent_size 64  \
   --max_num_tokens 32768 \
+  --vit_cond_dropout_prob 0 \
+  --text_cond_dropout_prob 0 \
   --mse_weight 1 \
   --ce_weight 1 \
   --total_steps 3000 \
