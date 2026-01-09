@@ -120,7 +120,9 @@ We opensource our training data mentioned in our paper containing four tasks: **
     dataset = load_dataset("ThinkMorph/Chart_Refocus", split="train")
     ```
 
-2. Convert the downloaded dataset into a data format suitable for model training. For details on the Bagel officially supported data formats, see in [Train](https://github.com/ByteDance-Seed/Bagel/blob/main/TRAIN.md). Based on Bagel's implementation, we modify the training code to support our interleaved data format, and an easy-to-understand example of a parquet file is shown below:
+2. Convert the downloaded dataset into a data format suitable for model training. We provide a format processing script in [here](https://github.com/ThinkMorph/ThinkMorph/issues/3#issuecomment-3519711671).
+   
+   Based on Bagel's implementation, we modify the training code to support our interleaved data format, and an easy-to-understand example of a parquet file is shown below:
 
 ```python
 {
@@ -129,6 +131,7 @@ We opensource our training data mentioned in our paper containing four tasks: **
     "output_text_list": [f"<think>{resoning_thought_0}</think><image_start>",f"<image_end><think>{resoning_thought_1}</think><answer>{answer}</answer>"],
 }
 ```
+
 
 3. Edit **`data/dataset_info.py`** with your own data path.
 
