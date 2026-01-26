@@ -3,7 +3,7 @@
 </p>
 
 
-## Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
+## [ICLR 2026]Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
 
 <p align="center">
   <a href="https://thinkmorph.github.io/">
@@ -47,6 +47,7 @@
 🌟  This is the official repository which contains the training and inference code for ThinkMorph.
 
 ## 💥 News 
+- **[2026.1.26]** 🎉 **Our paper has been accepted for Poster on ICLR 2026!** See you in Brazil!!
 - **[2025.12.22]** The evaluation code for ThinkMorph is now accessible at [VLMEvalKit_Thinkmorph](https://github.com/hychaochao/VLMEvalKit_Thinkmorph).
 - **[2025.10.29]** Our model checkpoint and training data are now accessible at [Huggingface](https://huggingface.co/ThinkMorph).
 - **[2025.10.29]** Our paper is now accessible at [arxiv](https://arxiv.org/abs/2510.27492).
