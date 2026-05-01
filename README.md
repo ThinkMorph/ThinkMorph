@@ -3,7 +3,7 @@
 </p>
 
 
-## [ICLR 2026]Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
+## [ICLR 2026] Emergent Properties in Multimodal Interleaved Chain-of-Thought Reasoning
 
 <p align="center">
   <a href="https://thinkmorph.github.io/">
